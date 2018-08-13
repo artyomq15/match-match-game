@@ -1,0 +1,258 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: #fff;
+
+    color: #000;
+    font-family: Roboto;
+}
+
+.game-name{
+    font-size: 70px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.welcome-menu{
+    text-align: center;
+}
+
+.welcome-menu-item{
+    font-size: 35px;
+    margin-bottom: 20px;
+    padding: 5px 0;
+}
+
+.welcome-menu-item:hover,
+.welcome-menu-item:focus{
+    background-color: #95ffa1;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.popup{
+    display: block;
+    font-size: 35px;
+    text-align: center;
+}
+
+.rules-popup>ul{
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.rules-popup>ul>li{
+    list-style-type: none;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.button{
+    display: inline;
+    font-size: 20px;
+    padding: 2px;
+}
+
+.button:hover{
+    cursor: pointer;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.back-button{
+    background-color: #ffbae6;
+}
+
+.submit-button{
+    background-color: #95ffa1;
+}
+
+.restart-button{
+    background-color: #fcff51;
+}
+
+.new-game-popup>div {
+    display: block;
+    float: left;
+    width: 33.33%;
+}
+
+.new-game-info-form>input{
+    width: 70%;
+    padding: 5px 5px;
+    margin: 0 auto 10px;
+    display: block;
+}
+
+.back-card-change-space>.card-scene{
+    z-index: 1000;
+    position: relative;
+    margin: 10px auto;
+}
+
+.back-card-menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    
+    width: 100%;
+}
+
+.back-card-menu>.card-scene{
+    width: 50px;
+    height: 70px;
+    display: block;
+    float: left;
+    margin: 0 0 5px 5px;
+}
+
+.back-card-change-space>.card-scene:hover  .back-card-menu{
+    display: block;
+}
+
+.difficulty{
+    width: 95%;
+    margin-right: 5%;
+    margin-bottom: 40px;
+    padding: 10px 0;
+}
+
+.difficulty:hover{
+    cursor: pointer;
+}
+
+#low{
+    border-color: rgb(0, 197, 43);
+}
+#medium{
+    border-color: rgb(221, 217, 0);
+}
+#high{
+    border-color: rgb(207, 0, 0);
+}
+
+.selected-difficulty{
+    border: 1px solid;
+}
+
+#low:hover,
+#low-records-p{
+    background-color: rgb(162, 255, 182);
+}
+
+#medium:hover,
+#medium-records-p{
+    background-color: rgb(241, 255, 162);
+}
+#high:hover,
+#high-records-p{
+    background-color: rgb(255, 162, 162);
+}
+
+.game-field{
+    text-align: center
+}
+
+#game-timer{
+    font-size: 20px;
+    padding: 20px;
+
+}
+
+#card-field {
+    width: 95%;
+    margin: 0 auto;
+}
+
+
+.card-scene {
+    width: 200px;
+    height: 280px;
+    margin: 10px;
+    perspective: 700px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: 1s;
+    transform-style: preserve-3d;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    
+    border-radius: 10px;
+}
+
+.card:hover{
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+    transform: scaleZ(50);
+    cursor: pointer;
+}
+
+.card-face {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+}
+
+.card-face--front {
+    background-size: 100% 100%;
+    transform: rotateY( 180deg );
+}
+  
+.card-face--back {
+    background-size: 100% 100%;
+}
+
+.card.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.records{
+    width: 100%;
+}
+
+.button-div{
+    margin-top: 20px;
+    float: left;
+    width: 100%;
+}
+
+.records>div{
+    float: left;
+    width: 33.33%;
+
+}
+
+.records>div>div{
+    width: 98%;
+    float: left;
+    margin: 0 1% 5px;
+    font-size: 20px;
+}
+
+.records>div>div:hover{
+    background-color: rgb(241, 241, 241);
+    cursor: pointer;
+}
+
+.record-player-name{
+    text-align: left;
+    float: left;
+    width: 69%;
+    margin-left: 1%;
+}
+
+.record-player-time{
+    float: left;
+    width: 29%;
+    margin-right: 1%;
+    text-align: center;
+}
+
+.hidden{
+    display: none;
+}

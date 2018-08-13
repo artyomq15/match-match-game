@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <title>match-match game</title>
+
+        <link href="./css/index.css" rel="stylesheet"/>
+    </head>
+
+    <body>
+        <div class="game-name">
+             match-match game
+        </div>
+        <div id="welcome-menu" class="welcome-menu">
+            <div tabindex="1" id="new-game-menu-item" class="welcome-menu-item">
+                new game
+            </div>
+            <div tabindex="2" id="rules-menu-item" class="welcome-menu-item">
+                rules
+            </div>
+            <div tabindex="3" id="records-menu-item" class="welcome-menu-item">
+                records
+            </div>
+        </div>
+
+        <div id="rules-popup" class="popup rules-popup hidden">
+            how to play
+            <ul>
+                <li>select two cards to try to match their pictures</li>
+                <li>if you match the pictures you can go again</li>
+                <li>if cards have different pictures the computer turn them</li>
+                <li>the player who finds all pairs wins</li>
+            </ul>
+            <p tabindex="4" id="back-from-rules" class="button back-button"> < back to menu</p>
+        </div>
+
+        <div id="new-game-popup" class="popup new-game-popup hidden">
+            <div class="back-card-change-space">
+                
+                    <div class="card-scene">
+                        <div class="card">
+                            <div id="current-card-back" class="card-face card-face--back"></div>
+                        </div>
+
+                        <div class="back-card-menu">
+
+                            <div class="card-scene">
+                                <div class="card">
+                                    <div class="card-face card-face--back pick-card-back"></div>
+                                </div>
+                            </div>
+                            <div class="card-scene">
+                                <div class="card">
+                                    <div class="card-face card-face--back pick-card-back"></div>
+                                </div>
+                            </div>
+                            <div class="card-scene">
+                                <div class="card">
+                                    <div class="card-face card-face--back pick-card-back"></div>
+                                </div>
+                            </div>
+                            <div class="card-scene">
+                                <div class="card">
+                                    <div class="card-face card-face--back pick-card-back"></div>
+                                </div>
+                            </div>
+                            <div class="card-scene">
+                                <div class="card">
+                                    <div class="card-face card-face--back pick-card-back"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    choose card back
+
+            </div>
+            <div>
+                <form class="new-game-info-form">
+
+                    <input tabindex="4" type="text" id="first-name-input" pattern="[A-Za-z]+" placeholder="first name" required/>
+                    <input tabindex="5" type="text" id="second-name-input" pattern="[A-Za-z]+" placeholder="second name" required/>
+                    <input tabindex="6" type="email" id="email-input" placeholder="email" required/>
+
+                    <p tabindex="7" id="submit-new-game" class="button submit-button">start game</p>
+                </form>
+
+                <p tabindex="8" id="back-from-new-game" class="button back-button"> < back to menu</p></back>
+            </div>
+            <div class="difficulty-change-space">
+                <div id="low" class="difficulty">
+                    low (5x2)
+                </div>
+                <div id="medium" class="difficulty">
+                    medium (6x3)
+                </div>
+                <div id="high" class="difficulty">
+                    high (9x4)
+                </div>
+                choose difficulty
+            </div>
+            
+        </div>
+
+        <div id="records-popup" class="popup records-popup hidden">
+
+            <div class="records">
+                        
+                <div id="low-records">
+
+                </div>
+                <div id="medium-records">
+                    
+                </div>
+                <div id="high-records">
+                    
+                </div>
+
+            </div>
+
+            <div class="button-div">
+                <p tabindex="4" id="back-from-records" class="button back-button"> < back to menu</p>
+            </div>
+            
+        </div>
+
+        <div id="game-field" class="game-field hidden">
+            <p tabindex="4" id="back-from-game" class="button back-button"> < back to menu</p>
+            <p tabindex="5" id="restart-game" class="button restart-button">restart</p>
+            <p tabindex="6" id="new-game" class="button submit-button">new game</p>
+            <div id="game-timer">00:00</div>
+            <div id="card-field">
+
+            </div>
+        </div>
+
+
+        <script src="./js/index.js"></script>
+    </body>
+
+</html>
