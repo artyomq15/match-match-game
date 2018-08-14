@@ -1,5 +1,8 @@
 'use strict';
 
+/*import { RECORD_LIST_KEY_IN_LOCAL_STORAGE } from './constants';*/
+
+//export 
 function renderRecords(difficulty) {
     let recordsElement = document.getElementById( difficulty + '-records');
 
@@ -7,6 +10,7 @@ function renderRecords(difficulty) {
     
     let p = document.createElement('p');
     p.id = difficulty + '-records-p';
+    p.className = p.id;
     p.innerText = difficulty;
 
     recordsElement.appendChild(p);

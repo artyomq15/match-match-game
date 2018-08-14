@@ -1,6 +1,8 @@
 'use strict';
 
-//menu buttons
+/*import { CLICK_EVENT_NAME, KEYPRESS_EVENT_NAME, DIFFICULTY, CARD_BACK } from './constants';
+import { currentDifficulty, currentPlayer, currentCardBack } from './init';
+import { Player } from './domain/Player';*/
 
 function setMenuListeners(){
 
@@ -43,26 +45,21 @@ function setMenuListeners(){
 function setDifficultyListeners(){
 
     for(let key in DIFFICULTY){
-
         let difficulty = DIFFICULTY[key];
-
         currentDifficulty.element.classList.add('selected-difficulty');
     
-        difficulty.element.addEventListener(CLICK_EVENT_NAME, () => {
-            changeCurrentDifficulty(difficulty);
-        });
-
-        function changeCurrentDifficulty(difficulty){
-            toggleCurrentDifficultyClass();
-            currentDifficulty = difficulty;
-            toggleCurrentDifficultyClass();
-        }
-
-        function toggleCurrentDifficultyClass(){
-            document.getElementById(currentDifficulty.element.id).classList.toggle('selected-difficulty');
-        }
-
+        difficulty.element.addEventListener(CLICK_EVENT_NAME, changeCurrentDifficulty.bind(null, difficulty));
     }
+}
+
+function changeCurrentDifficulty(difficulty){
+    toggleCurrentDifficultyClass();
+    currentDifficulty = difficulty;
+    toggleCurrentDifficultyClass();
+}
+
+function toggleCurrentDifficultyClass(){
+    document.getElementById(currentDifficulty.element.id).classList.toggle('selected-difficulty');
 }
 
 //submit new game
@@ -70,36 +67,42 @@ function setDifficultyListeners(){
 function setSubmitNewGameListener(){
     let element = document.getElementById('submit-new-game');
 
-    let fn = () => {
-        let firstName = document.getElementById('first-name-input');
-        if (!firstName.validity.valid){
-            firstName.value = '';
-            return;
-        }
-        let secondName = document.getElementById('second-name-input');
-        if (!secondName.validity.valid){
-            secondName.value = '';
-            return;
-        }
-        let email = document.getElementById('email-input');
-        if (!email.validity.valid){
-            email.value = '';
-            return;
-        }
+    element.addEventListener(CLICK_EVENT_NAME, submitNewGame);
+    element.addEventListener(KEYPRESS_EVENT_NAME, submitNewGame);   
+}
 
+function submitNewGame(){
+    let firstName = document.getElementById('first-name-input');
+    let secondName = document.getElementById('second-name-input');
+    let email = document.getElementById('email-input');
+
+    if (isValidInput(firstName, secondName, email)){
         currentPlayer = new Player(firstName.value, secondName.value, email.value);
 
         document.getElementById('new-game-popup').classList.toggle('hidden');
         document.getElementById('game-field').classList.toggle('hidden');
 
         startGame();
-
     }
+}
 
-    element.addEventListener(CLICK_EVENT_NAME, fn);
-    element.addEventListener(KEYPRESS_EVENT_NAME, fn);
-
+function isValidInput(firstName, secondName, email){
     
+    if (!firstName.validity.valid){
+        firstName.value = '';
+        return false;
+    }
+    
+    if (!secondName.validity.valid){
+        secondName.value = '';
+        return false;
+    }
+    
+    if (!email.validity.valid){
+        email.value = '';
+        return false;
+    }
+    return true;
 }
 
 //card back
@@ -123,6 +126,7 @@ let setCardsBack = () => {
 }
 
 
+//export 
 function setListeners(){
     setMenuListeners();
     setDifficultyListeners();

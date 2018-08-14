@@ -123,13 +123,13 @@ body{
     cursor: pointer;
 }
 
-#low{
+.low-difficulty{
     border-color: rgb(0, 197, 43);
 }
-#medium{
+.medium-difficulty{
     border-color: rgb(221, 217, 0);
 }
-#high{
+.high-difficulty{
     border-color: rgb(207, 0, 0);
 }
 
@@ -137,17 +137,17 @@ body{
     border: 1px solid;
 }
 
-#low:hover,
-#low-records-p{
+.low-difficulty:hover,
+.low-records-p{
     background-color: rgb(162, 255, 182);
 }
 
-#medium:hover,
-#medium-records-p{
+.medium-difficulty:hover,
+.medium-records-p{
     background-color: rgb(241, 255, 162);
 }
-#high:hover,
-#high-records-p{
+.high-difficulty:hover,
+.high-records-p{
     background-color: rgb(255, 162, 162);
 }
 
@@ -155,13 +155,13 @@ body{
     text-align: center
 }
 
-#game-timer{
+.game-timer{
     font-size: 20px;
     padding: 20px;
 
 }
 
-#card-field {
+.card-field {
     width: 95%;
     margin: 0 auto;
 }

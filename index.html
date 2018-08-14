@@ -91,13 +91,13 @@
                 <p tabindex="8" id="back-from-new-game" class="button back-button"> < back to menu</p></back>
             </div>
             <div class="difficulty-change-space">
-                <div id="low" class="difficulty">
+                <div id="low" class="difficulty low-difficulty">
                     low (5x2)
                 </div>
-                <div id="medium" class="difficulty">
+                <div id="medium" class="difficulty medium-difficulty">
                     medium (6x3)
                 </div>
-                <div id="high" class="difficulty">
+                <div id="high" class="difficulty high-difficulty">
                     high (9x4)
                 </div>
                 choose difficulty
@@ -131,17 +131,21 @@
             <p tabindex="4" id="back-from-game" class="button back-button"> < back to menu</p>
             <p tabindex="5" id="restart-game" class="button restart-button">restart</p>
             <p tabindex="6" id="new-game" class="button submit-button">new game</p>
-            <div id="game-timer">00:00</div>
-            <div id="card-field">
+            <div id="game-timer" class="game-timer">00:00</div>
+            <div id="card-field" class="card-field">
 
             </div>
         </div>
 
-        <script src="./js/domain.js"></script>
-        <script src="./js/init.js"></script>
-        <script src="./js/records.js"></script>
-        <script src="./js/listeners.js"></script>
+        <script src="./js/domain/Card.js"></script>
+        <script src="./js/domain/Difficulty.js"></script>
+        <script src="./js/domain/Player.js"></script>
+        <script src="./js/domain/Result.js"></script>
+        <script src="./js/constants.js"></script>
         <script src="./js/game.js"></script>
+        <script src="./js/records.js"></script>
+        <script src="./js/init.js"></script>
+        <script src="./js/listeners.js"></script>
         <script src="./js/index.js"></script>
     </body>
 
