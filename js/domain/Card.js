@@ -1,7 +1,6 @@
 'use strict';
 
-//export 
-class Card{
+export class Card{
     constructor(divId, url, value){
         this.divId = 'card-' + divId;
         this.url = url;

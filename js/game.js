@@ -1,30 +1,24 @@
 'use strict';
 
-/*import { 
-    cards,
-    currentDifficulty,
-    currentCardBack,
-    firstCard,
-    secondCard,
-    clickable
-} from './init';
+import { global as _ } from './init';
 
 import { 
     RECORD_LIST_KEY_IN_LOCAL_STORAGE,
     CLICK_EVENT_NAME,
     CARD_FRONT_DIRECTORY,
     CARD_POOL,
-    CARD_FLIP_CLASS
+    CARD_FLIP_CLASS,
+    CARD_FLIP_TIME
 } from './constants';
 
 import { Result } from './domain/Result';
-import { Card } from './domain/Card';*/
+import { Card } from './domain/Card';
+import { convertSecondsToMinutesWithSeconds } from './init';
 
-//export 
-function startGame(){
+export function startGame(){
     
     let time = 0;
-    cards = [];
+    _.cards = [];
 
     document.getElementById('game-timer').innerHTML = '00:00';
 
@@ -32,11 +26,11 @@ function startGame(){
         ++time;
         document.getElementById('game-timer').innerHTML = convertSecondsToMinutesWithSeconds(time);
 
-        if(cards.every((card) => !card.isInGame)){
+        if(_.cards.every((card) => !card.isInGame)){
             clearInterval(timer);
 
-            let result = new Result(currentPlayer, currentDifficulty, time);
-            let recordsKey = currentDifficulty.name + RECORD_LIST_KEY_IN_LOCAL_STORAGE;
+            let result = new Result(_.currentPlayer, _.currentDifficulty, time);
+            let recordsKey = _.currentDifficulty.name + RECORD_LIST_KEY_IN_LOCAL_STORAGE;
             let records = JSON.parse(window.localStorage.getItem(recordsKey));
 
             if (records.length < 10){
@@ -85,24 +79,24 @@ function renderField(){
 
     let field = document.getElementById('card-field');
     field.innerHTML = '';
-    for (let card of cards){
+    for (let card of _.cards){
         field.appendChild(createCardElement(card, computeCardWidth(field)));
     }
 }
 
 function computeCardWidth(fieldElement){
-    return parseFloat(getComputedStyle(fieldElement).width)/currentDifficulty.width - 25 ;
+    return parseFloat(getComputedStyle(fieldElement).width)/_.currentDifficulty.width - 25 ;
 }
 
 function addCardsForCurrentGame(){
     let id = 1;
-    for (let i = 0; i < (currentDifficulty.width*currentDifficulty.height)/2; i++){
+    for (let i = 0; i < (_.currentDifficulty.width*_.currentDifficulty.height)/2; i++){
         let url = CARD_FRONT_DIRECTORY + (i+1) + '.png';
 
-        cards.push(new Card(id++, url, CARD_POOL[i]));
-        cards.push(new Card(id++, url, CARD_POOL[i]));
+        _.cards.push(new Card(id++, url, CARD_POOL[i]));
+        _.cards.push(new Card(id++, url, CARD_POOL[i]));
     }
-    shuffle(cards);
+    shuffle(_.cards);
 }
 
 function createCardElement(cardObject, cardWidth){
@@ -121,7 +115,7 @@ function createCardElement(cardObject, cardWidth){
     card.style.width =  cardWidth + 'px';
     card.style.height = 10 * cardWidth / 8 + 'px';
     card.children[0].children[0].style.backgroundImage = 'url(' + cardObject.url + ')';
-    card.children[0].children[1].style.backgroundImage = 'url(' + currentCardBack + ')';
+    card.children[0].children[1].style.backgroundImage = 'url(' + _.currentCardBack + ')';
 
     card.addEventListener(CLICK_EVENT_NAME, handleCardClick.bind(null, cardObject));
 
@@ -131,43 +125,43 @@ function createCardElement(cardObject, cardWidth){
 
 function handleCardClick(cardObject){
     let firstElem, secondElem;
-    if(clickable && cardObject.isInGame){
-        if(!firstCard){
-            firstCard = cardObject;
-            firstCard.isInGame = false;
-            firstElem = document.getElementById(firstCard.divId);
+    if(_.clickable && cardObject.isInGame){
+        if(!_.firstCard){
+            _.firstCard = cardObject;
+            _.firstCard.isInGame = false;
+            firstElem = document.getElementById(_.firstCard.divId);
             firstElem.classList.add(CARD_FLIP_CLASS);
         } else {
-            clickable = false;
+            _.clickable = false;
 
-            secondCard = cardObject;
-            secondCard.isInGame = false;
+            _.secondCard = cardObject;
+            _.secondCard.isInGame = false;
 
-            firstElem = document.getElementById(firstCard.divId);
-            secondElem = document.getElementById(secondCard.divId);
+            firstElem = document.getElementById(_.firstCard.divId);
+            secondElem = document.getElementById(_.secondCard.divId);
 
             secondElem.classList.add(CARD_FLIP_CLASS);
 
-            if(firstCard.value == secondCard.value){
+            if(_.firstCard.value == _.secondCard.value){
                 setTimeout(function(){
                     secondElem.style.opacity = '0';
                     firstElem.style.opacity = '0';
 
-                    firstCard = null;
-                    secondCard = null;
-                    clickable = true;
+                    _.firstCard = null;
+                    _.secondCard = null;
+                    _.clickable = true;
                 }, CARD_FLIP_TIME);
             } else {
                 setTimeout(function(){
                     secondElem.classList.remove(CARD_FLIP_CLASS);
                     firstElem.classList.remove(CARD_FLIP_CLASS);
 
-                    firstCard.isInGame = true;
-                    secondCard.isInGame = true;
+                    _.firstCard.isInGame = true;
+                    _.secondCard.isInGame = true;
 
-                    firstCard = null;
-                    secondCard = null;
-                    clickable = true;
+                    _.firstCard = null;
+                    _.secondCard = null;
+                    _.clickable = true;
                 }, CARD_FLIP_TIME);
             }
         }

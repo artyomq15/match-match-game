@@ -1,9 +1,9 @@
 'use strict';
 
-/*import { RECORD_LIST_KEY_IN_LOCAL_STORAGE } from './constants';*/
+import { RECORD_LIST_KEY_IN_LOCAL_STORAGE } from './constants';
+import { convertSecondsToMinutesWithSeconds } from './init';
 
-//export 
-function renderRecords(difficulty) {
+export function renderRecords(difficulty) {
     let recordsElement = document.getElementById( difficulty + '-records');
 
     recordsElement.innerHTML = '';

@@ -1,6 +1,6 @@
 'use strict';
 
-//import { Difficulty } from './domain/Difficulty';
+import { Difficulty } from './domain/Difficulty';
 
 const CLICK_EVENT_NAME = 'click';
 const KEYPRESS_EVENT_NAME = 'keypress';
@@ -29,7 +29,7 @@ const CARD_POOL = [];
 const CARD_FLIP_CLASS = 'is-flipped';
 const CARD_FLIP_TIME = 600;
 
-/*export { CLICK_EVENT_NAME,
+export { CLICK_EVENT_NAME,
     KEYPRESS_EVENT_NAME,
     CARD_BACK_DIRECTORY,
     CARD_FRONT_DIRECTORY,
@@ -39,4 +39,4 @@ const CARD_FLIP_TIME = 600;
     CARD_POOL,
     CARD_FLIP_TIME,
     CARD_FLIP_CLASS
-}*/
+}

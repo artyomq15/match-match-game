@@ -1,8 +1,10 @@
 'use strict';
 
-/*import { CLICK_EVENT_NAME, KEYPRESS_EVENT_NAME, DIFFICULTY, CARD_BACK } from './constants';
-import { currentDifficulty, currentPlayer, currentCardBack } from './init';
-import { Player } from './domain/Player';*/
+import { CLICK_EVENT_NAME, KEYPRESS_EVENT_NAME, DIFFICULTY, CARD_BACK } from './constants';
+import { global as _ } from './init';
+import { Player } from './domain/Player';
+import { renderRecords } from './records';
+import { startGame } from './game';
 
 function setMenuListeners(){
 
@@ -46,7 +48,7 @@ function setDifficultyListeners(){
 
     for(let key in DIFFICULTY){
         let difficulty = DIFFICULTY[key];
-        currentDifficulty.element.classList.add('selected-difficulty');
+        _.currentDifficulty.element.classList.add('selected-difficulty');
     
         difficulty.element.addEventListener(CLICK_EVENT_NAME, changeCurrentDifficulty.bind(null, difficulty));
     }
@@ -54,12 +56,12 @@ function setDifficultyListeners(){
 
 function changeCurrentDifficulty(difficulty){
     toggleCurrentDifficultyClass();
-    currentDifficulty = difficulty;
+    _.currentDifficulty = difficulty;
     toggleCurrentDifficultyClass();
 }
 
 function toggleCurrentDifficultyClass(){
-    document.getElementById(currentDifficulty.element.id).classList.toggle('selected-difficulty');
+    document.getElementById(_.currentDifficulty.element.id).classList.toggle('selected-difficulty');
 }
 
 //submit new game
@@ -77,7 +79,7 @@ function submitNewGame(){
     let email = document.getElementById('email-input');
 
     if (isValidInput(firstName, secondName, email)){
-        currentPlayer = new Player(firstName.value, secondName.value, email.value);
+        _.currentPlayer = new Player(firstName.value, secondName.value, email.value);
 
         document.getElementById('new-game-popup').classList.toggle('hidden');
         document.getElementById('game-field').classList.toggle('hidden');
@@ -107,7 +109,7 @@ function isValidInput(firstName, secondName, email){
 
 //card back
 
-let setCardBackForGame = () => document.getElementById('current-card-back').style.backgroundImage = 'url(' + currentCardBack + ')';
+let setCardBackForGame = () => document.getElementById('current-card-back').style.backgroundImage = 'url(' + _.currentCardBack + ')';
 
 let setCardsBack = () => {
     let i = 0;
@@ -119,15 +121,14 @@ let setCardsBack = () => {
         element.style.backgroundImage = 'url(' + CARD_BACK[key] + ')';
 
         element.addEventListener(CLICK_EVENT_NAME, ()=>{
-            currentCardBack = CARD_BACK[key];
+            _.currentCardBack = CARD_BACK[key];
             setCardBackForGame();
         });
     }
 }
 
 
-//export 
-function setListeners(){
+export function setListeners(){
     setMenuListeners();
     setDifficultyListeners();
     setSubmitNewGameListener();

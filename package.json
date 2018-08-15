@@ -1,0 +1,16 @@
+{
+  "name": "match-match-game",
+  "version": "1.0.0",
+  "description": "match-match memory game",
+  "author": "Artsiom Stankevich",
+  "scripts": {
+    "dev": "webpack-dev-server --hot --open",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack": "^4.7.0",
+    "webpack-cli": "^2.1.2",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
